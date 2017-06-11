@@ -9,6 +9,15 @@ var userData = {
 	skills: {html:"",css:"",js:""}
 };
 
+//window.localStorage.userData = JSON.stringify(userData);
+//console.log(localStorage.userData);
+//var testData = JSON.parse(localStorage.userData);
+//console.log(testData.name);
+
+if(window.localStorage.userData){						//store the value in local storage
+	userData = JSON.parse(window.localStorage.userData);
+}
+
 $("#startBtn").click(function(event){
 	//console.log("start clicked")
 	$("#welcome").hide();
@@ -16,8 +25,15 @@ $("#startBtn").click(function(event){
 	$("#nextBtn").hide();
 });
 
+
 $("#name").change(function(event){
-	$("#email").change(function(event){	
+	console.log($("#name").val());
+	if($("#name").val()){						//store the value in local storage
+		userData.name = $("#name").val();
+		window.localStorage.userData = JSON.stringify(userData);
+	}
+	$("#email").change(function(event){
+			
 		//console.log($("#name").val());
 		//console.log($("#email").val());
    		 //var x = document.input["email"]["email"].value;
@@ -28,14 +44,18 @@ $("#name").change(function(event){
 		//}
 		//var valid = true;
 		//if(valid==true){
+		if($("#email").val()){					//store the value in local storage
+		userData.email = $("#email").val();
+		window.localStorage.userData = JSON.stringify(userData);
+	}
 			$("#nextBtn").show();	
 	//	}
 });
 
 	
-	if($("#name").val()){
+	//if($("#name").val()){
 		//userData.name =  $("#name").val();
-	}	
+	//}	
 });
 
 
